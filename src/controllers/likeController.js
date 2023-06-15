@@ -11,7 +11,7 @@ export const likeRestaurant = async (req, res) => {
             res_id,
         })
         res.status(200).json({
-            message: 'Like Restaurant Successfully'
+            message: 'Like restaurant successfully'
         })
     } catch (error) {
         res.status(500).json({ error: error })
@@ -21,7 +21,7 @@ export const likeRestaurant = async (req, res) => {
 export const unlikeRestaurant = async (req, res) => {
     try {
         let { user_id, res_id } = req.params;
-        const restaurant = await models.like_res.findAll({ where: { res_id: res_id } })
+        const restaurant = await models.restaurant.findAll({ where: { res_id } });
         if (!restaurant) {
             res.status(404).json({
                 message: 'Restaurant not found'
