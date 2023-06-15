@@ -26,11 +26,34 @@ export const rateRestaurant = async (req, res) => {
 }
 
 export const getRatedRestaurationsByRestaurationId = async (req, res) => {
-
+    try {
+        let { res_id } = req.params;
+        const restaurant = await models.restaurant.findOne({ where: { res_id } });
+        if (!restaurant) {
+            res.status(404).json({
+                message: 'Restaurant not found'
+            })
+            return;
+        }
+        const data = await models.rate_res.findAll({
+            include: ["user"], where: { res_id }
+        })
+        res.status(200).json({ message: 'Get Rated Restaurants By RestaurantID Successfully', content: data })
+    } catch (error) {
+        res.status(500).json({ error: error })
+    }
 }
 
 export const getRatedRestaurationsByUserId = async (req, res) => {
-
+    try {
+        let { user_id } = req.params;
+        const data = await models.rate_res.findAll({
+            include: ["re"], where: { user_id }
+        })
+        res.status(200).json({ message: 'Get Rated Restaurants By RestaurantID Successfully', content: data })
+    } catch (error) {
+        res.status(500).json({ error: error })
+    }
 }
 
 
