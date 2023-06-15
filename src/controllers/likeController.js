@@ -48,7 +48,6 @@ export const getLikedRestaurantsByRestaurantId = async (req, res) => {
         const data = await models.like_res.findAll(
             { include: ["user"], where: { res_id } }
         )
-
         res.status(200).json({ message: 'Get Liked Restaurants By RestaurantID Successfully', content: data })
     } catch (error) {
         res.status(500).json({ error: error })
