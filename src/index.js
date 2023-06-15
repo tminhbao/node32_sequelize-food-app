@@ -6,11 +6,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.json()); // middleware giúp BE đọc được cấu trúc JSON
+app.use(express.json());
 app.use(cors())
 
 app.listen(process.env.PORT, () => {
-    console.log('Server listening on port ' + process.env.PORT)
+    console.log('Server listening on port ' + process.env.PORT || 8080)
 })
 
 app.use("/api", rootRouter);

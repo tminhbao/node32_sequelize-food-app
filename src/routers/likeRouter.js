@@ -5,7 +5,7 @@ const likeRouter = express.Router();
 
 likeRouter.post('/', likeRestaurant);
 likeRouter.delete('/:user_id/:res_id', unlikeRestaurant);
-likeRouter.get('/:res_id', getLikedRestaurantsByRestaurantId);
-likeRouter.get('/:user_id', getLikedRestaurantsByUserId);
+likeRouter.get('/res/:res_id', getLikedRestaurantsByRestaurantId);
+likeRouter.get('/user/:user_id', getLikedRestaurantsByUserId);
 
 export default likeRouter;
