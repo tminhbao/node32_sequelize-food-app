@@ -29,7 +29,7 @@ export const unlikeRestaurant = async (req, res) => {
             return;
         }
         await models.like_res.destroy({ where: { user_id } })
-        res.status(200).json({ message: 'Unlike Restaurant Successfully' })
+        res.status(200).json({ message: 'Unlike restaurant successfully' })
     } catch (error) {
         res.status(500).json({ error: error })
     }
@@ -48,7 +48,7 @@ export const getLikedRestaurantsByRestaurantId = async (req, res) => {
         const data = await models.like_res.findAll(
             { include: ["user"], where: { res_id } }
         )
-        res.status(200).json({ message: 'Get Liked Restaurants By RestaurantID Successfully', content: data })
+        res.status(200).json({ message: 'Get liked restaurants by restaurantID successfully', content: data })
     } catch (error) {
         res.status(500).json({ error: error })
     }
@@ -58,7 +58,7 @@ export const getLikedRestaurantsByUserId = async (req, res) => {
     try {
         let { user_id } = req.params;
         const data = await models.like_res.findAll({ include: ['re'], where: { user_id } })
-        res.status(200).json({ message: 'Get Liked Restaurants By UserID Successfully', content: data })
+        res.status(200).json({ message: 'Get liked restaurants by userID successfully', content: data })
     } catch (error) {
         res.status(500).json({ error: error })
     }

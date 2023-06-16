@@ -18,7 +18,7 @@ export const rateRestaurant = async (req, res) => {
             res_id,
         })
         res.status(200).json({
-            message: 'Rate Restaurant successfully'
+            message: 'Rate restaurant successfully'
         })
     } catch (error) {
         res.status(500).json({ error: error })
@@ -38,7 +38,7 @@ export const getRatedRestaurationsByRestaurationId = async (req, res) => {
         const data = await models.rate_res.findAll({
             include: ["user"], where: { res_id }
         })
-        res.status(200).json({ message: 'Get Rated Restaurants By RestaurantID Successfully', content: data })
+        res.status(200).json({ message: 'Get rated restaurants by RestaurantID successfully', content: data })
     } catch (error) {
         res.status(500).json({ error: error })
     }
@@ -50,7 +50,7 @@ export const getRatedRestaurationsByUserId = async (req, res) => {
         const data = await models.rate_res.findAll({
             include: ["re"], where: { user_id }
         })
-        res.status(200).json({ message: 'Get Rated Restaurants By RestaurantID Successfully', content: data })
+        res.status(200).json({ message: 'Get rated restaurants by RestaurantID successfully', content: data })
     } catch (error) {
         res.status(500).json({ error: error })
     }
