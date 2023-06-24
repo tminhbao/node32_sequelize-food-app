@@ -9,6 +9,7 @@ export const likeRestaurant = async (req, res) => {
         await models.like_res.create({
             user_id,
             res_id,
+            date_like: new Date().getDate(),
         })
         res.status(200).json({
             message: 'Like restaurant successfully'
